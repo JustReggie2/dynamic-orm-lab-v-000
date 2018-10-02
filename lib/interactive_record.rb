@@ -56,8 +56,14 @@ class InteractiveRecord
     DB[:conn].execute(sql, name)
   end
 
-  def self.find_by(attr)
-    
+  def self.find_by(arg={})
+    row = []
+    arg.each do |key, value|
+      sql = "SELECT * FROM #{self.table_name} WHERE #{send(key)} = #{send(value)}"
+      row << DB[:conn].execute(sql)
+    end
+    row
+  end
 
   end
 end
