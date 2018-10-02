@@ -59,5 +59,5 @@ class InteractiveRecord
   def self.find_by(attr)
     sql =
 
-  end 
+  end
 end
